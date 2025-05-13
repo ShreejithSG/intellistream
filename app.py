@@ -87,10 +87,6 @@ def transcribe_uploaded_mp3(uploaded_mp3):
             tmpfile.write(uploaded_mp3.getvalue())
             audio_file_path = tmpfile.name
  
-        # You might want to process/convert the MP3 file with FFmpeg here if needed
-        # For example, to ensure it's in the correct format for Whisper or to extract a specific part
-        # This is optional and depends on your requirements
- 
         # Transcribe the audio file using Whisper
         transcript = get_transcript_from_audio(audio_file_path)
        
@@ -300,7 +296,7 @@ with col1:
 
         # Modify the section where you display frames to include text extraction and display
         # Modify the section where base64 encoded frames are processed
-        # After successfully executing the FFmpeg command to capture frames
+        
             if ffmpeg_output:
                 st.write("Frames Extracted:")
                 frame_bytes_list = ffmpeg_output.split(b'\xff\xd8')[1:]  # Correct splitting for JPEG frames
@@ -341,7 +337,6 @@ with col1:
                 st.write("Analysis Results for All Frames:")
                 # Assuming 'categories' is defined with all possible categories you're interested in
                 categories = ["Bullying", "Nudity & Adult Content", "Graphic Violence", "Illegal Goods", "Child Safety", "Sexual Abuse", "Profanity", "Self Harm/Suicide", "Violent Extremism","None"]
-                # Here, you might want to process combined_analysis_results to summarize or just display them
     
             #    display_categories(" ".join(categories_results), categories)
         
